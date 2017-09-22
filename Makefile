@@ -27,9 +27,9 @@ APPVERSION_N=1
 APPVERSION_P=8
 APPVERSION=$(APPVERSION_M).$(APPVERSION_N).$(APPVERSION_P)
 
-# ifndef COIN
-# COIN =bitcoin
-# endif
+ifndef COIN
+COIN =zencash
+endif
 
 ifeq ($(COIN),bitcoin_testnet)
 # Bitcoin testnet
@@ -120,8 +120,8 @@ DEFINES   += APPVERSION=\"$(APPVERSION)\"
 ##############
 # Compiler #
 ##############
-#GCCPATH   := $(BOLOS_ENV)/gcc-arm-none-eabi-5_3-2016q1/bin/
-#CLANGPATH := $(BOLOS_ENV)/clang-arm-fropi/bin/
+GCCPATH   := $(BOLOS_ENV)/gcc-arm-none-eabi-5_3-2016q1/bin/
+CLANGPATH := $(BOLOS_ENV)/clang-arm-fropi/bin/
 CC       := $(CLANGPATH)clang 
 
 #CFLAGS   += -O0
