@@ -698,7 +698,7 @@ void transaction_parse(unsigned char parseMode) {
                     int ParamHeight = 0x21FC0;
                     // Hash of Block 139200: 00000001ea53c09a45e3f097ba8f48a4c117b5b368031c4eb2fa02cb5a84c99e
                     //  No more then 28 bytes
-                    int ParamBlockHash = 0x00000001ea53c09a45e3f097ba8f48a4c117b5b368031c4eb2fa02cb5a84c99e;
+                    int ParamBlockHash = 0xb2fa02cb5a84c99e;
 #endif
                     unsigned char dataAvailable;
                     L_DEBUG_APP(
