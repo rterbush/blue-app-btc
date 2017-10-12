@@ -31,6 +31,7 @@ void check_transaction_available(unsigned char x) {
 #define OP_HASH160 0xA9
 #define OP_EQUAL 0x87
 #define OP_CHECKMULTISIG 0xAE
+#define OP_CHECKBLOCKATHEIGHT 0xB4
 
 unsigned char transaction_amount_add_be(unsigned char *target,
                                         unsigned char WIDE *a,
@@ -209,7 +210,7 @@ void transaction_parse(unsigned char parseMode) {
                         transaction_offset_increase(4);
                     }
 #endif
-                    // Number of inputs
+                   // Number of inputs
                     btchip_context_D.transactionContext
                         .transactionRemainingInputsOutputs =
                         transaction_get_varint();
@@ -691,6 +692,12 @@ void transaction_parse(unsigned char parseMode) {
                     // no break is intentional
                 }
                 case BTCHIP_TRANSACTION_OUTPUT_HASHING_IN_PROGRESS_OUTPUT_SCRIPT: {
+#ifdef COIN_ZENCASH
+                    // Coin is ZenCash, add BIP0115 support
+                    // Block 139200
+                    // BlockHash 00000001ea53c09a45e3f097ba8f48a4c117b5b368031c4eb2fa02cb5a84c99e
+                    ;
+#endif
                     unsigned char dataAvailable;
                     L_DEBUG_APP(
                         ("Process output script, remaining " DEBUG_LONG "\n",
